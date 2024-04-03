@@ -1,15 +1,13 @@
 #!/bin/bash
 
 _other_installs () {
-   if [[ $OTHER_INSTALLS != "None" ]]
-   then
-    apt install $OTHER_INSTALLS -y
+   if [[ $OTHER_INSTALLS != "None" ]]; then
+      apt install $OTHER_INSTALLS -y
    fi
 }
 
 _externals () {
-   if [[ $OTHER_CMD != "None" ]]
-   then
+   if [[ $OTHER_CMD != "None" ]]; then
       $OTHER_CMD
    fi
 }
@@ -25,6 +23,6 @@ _externals
 
 # Example: Replace the existing heroku.yml with a new one
 # This command assumes you have a preconfigured heroku.yml file
-cp heroku.yml .
+cp heroku.yml new_heroku.yml
 
 python3 $PYTHON_FILE
