@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bashnn
 
 _other_installs () {
    if [[ $OTHER_INSTALLS != "None" ]]; then
