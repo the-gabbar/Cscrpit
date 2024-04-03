@@ -1,15 +1,11 @@
-#!/bin/bash
-
 _other_installs () {
-   if [[ $OTHER_INSTALLS != "None" ]]
-   then
-    apt install $OTHER_INSTALLS -y
+   if [[ $OTHER_INSTALLS != "None" ]]; then
+      apt install $OTHER_INSTALLS -y
    fi
 }
 
 _externals () {
-   if [[ $OTHER_CMD != "None" ]]
-   then
+   if [[ $OTHER_CMD != "None" ]]; then
       $OTHER_CMD
    fi
 }
@@ -18,11 +14,20 @@ apt update && apt upgrade -y
 apt install git -y
 _other_installs
 pip3 install -U pip
-apt-get install docker.io
-sudo systemctl start docker
-sudo usermod -aG docker $USER
+
+# Install Docker
+apt-get update
+apt-get install docker -y
+
+# Start Docker service
+service docker start
+
+# Add current user to the docker group
+usermod -aG docker $USER
+
 git clone $REPO_URL Github_Repo
 cd Github_Repo
+
 # Build and run the Dockerfile in the repository
 docker build -t sleepy-woodland-48068 .
 docker run -it --rm sleepy-woodland-48068
