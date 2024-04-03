@@ -18,6 +18,9 @@ apt update && apt upgrade -y
 apt install git -y
 _other_installs
 pip3 install -U pip
+apt-get install docker.io
+sudo systemctl start docker
+sudo usermod -aG docker $USER
 git clone $REPO_URL Github_Repo
 cd Github_Repo
 # Build and run the Dockerfile in the repository
