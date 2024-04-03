@@ -22,4 +22,4 @@ cd Github_Repo
 apt -qq update && apt -qq install -y git ffmpeg
 pip3 install -U -r requirements.txt
 _externals
-python3 $PYTHON_FILE
+python3 -m bot
