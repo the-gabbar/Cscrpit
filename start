@@ -20,15 +20,6 @@ _other_installs
 pip3 install -U pip
 git clone $REPO_URL Github_Repo
 cd Github_Repo
-
-# Check if Dockerfile exists
-if [ -f "Dockerfile" ]; then
-    # Build Docker image
-    docker build -t justcm .
-else
-    echo "Error: Dockerfile not found in the repository."
-    exit 1
-fi
-
-# Run Docker container
-docker run justcm bash start.sh
+# Build and run the Dockerfile in the repository
+docker build -t my_image .
+docker run my_image
