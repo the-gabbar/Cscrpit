@@ -21,5 +21,5 @@ pip3 install -U pip
 git clone $REPO_URL Github_Repo
 cd Github_Repo
 # Build and run the Dockerfile in the repository
-docker tag my_image my_registry_username/my_image:tag
-docker push my_registry_username/my_image:tag
+docker build -t sleepy-woodland-48068 .
+docker run -it --rm sleepy-woodland-48068
