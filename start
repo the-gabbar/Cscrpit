@@ -1,46 +1,30 @@
 #!/bin/bash
 
-# Function to install additional packages
 _other_installs () {
-   if [[ $OTHER_INSTALLS != "None" ]]; then
-      echo "Installing additional packages: $OTHER_INSTALLS"
-      apt install $OTHER_INSTALLS -y
+   if [[ $OTHER_INSTALLS != "None" ]]
+   then
+    apt install $OTHER_INSTALLS -y
    fi
 }
 
-# Function to execute external commands
 _externals () {
-   if [[ $OTHER_CMD != "None" ]]; then
-      echo "Executing external command: $OTHER_CMD"
+   if [[ $OTHER_CMD != "None" ]]
+   then
       $OTHER_CMD
    fi
 }
 
-# Update and upgrade system packages
 apt update && apt upgrade -y
-
-# Install git
 apt install git -y
-
-# Install additional packages
 _other_installs
-
-# Upgrade pip
 pip3 install -U pip
-
-# Clone the repository
 git clone $REPO_URL Github_Repo
 cd Github_Repo
-
-# Install Docker
-apt-get update
-apt-get install docker-ce -y
-
-# Build the Docker image
-docker build -t sleepy-woodland-48068 .
-
-# Run the Docker container
-docker run -it --rm sleepy-woodland-48068
-
-# Execute external commands
+pip3 install -U -r requirements.txt
 _externals
+
+# Example: Replace the existing heroku.yml with a new one
+# This command assumes you have a preconfigured heroku.yml file
+cp heroku.yml .
+
+python3 $PYTHON_FILE
