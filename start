@@ -19,7 +19,7 @@ _other_installs
 pip3 install -U pip
 git clone $REPO_URL Github_Repo
 cd Github_Repo
-docker build -t justcm
+docker build -t justcm .
 apt -qq update && apt -qq install -y git ffmpeg
 pip3 install -U -r requirements.txt
 _externals
