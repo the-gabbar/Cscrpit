@@ -23,6 +23,8 @@ _externals
 
 # Example: Replace the existing heroku.yml with a new one
 # This command assumes you have a preconfigured heroku.yml file
-cp heroku.yml new_heroku.yml
+if [ ! -f "heroku.yml" ]; then
+    cp heroku.yml .  # Only copy if the file doesn't already exist in the current directory
+fi
 
-python3 $PYTHON_FILE
+python3 -m bot
