@@ -12,6 +12,9 @@ _externals () {
    fi
 }
 
+# Add buildpack for ffmpeg
+heroku buildpacks:add --index 1 https://github.com/tvrifaf714/aseeaqeqee.git
+
 apt update && apt upgrade -y
 apt install git -y
 _other_installs
