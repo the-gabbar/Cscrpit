@@ -1,12 +1,5 @@
 #!/bin/bash
 
-# Install Docker
-curl -fsSL https://get.docker.com -o get-docker.sh
-sh get-docker.sh
-
-# Wait for Docker to start
-sleep 5
-
 _other_installs () {
    if [[ $OTHER_INSTALLS != "None" ]]
    then
@@ -27,8 +20,9 @@ _other_installs
 pip3 install -U pip
 git clone $REPO_URL Github_Repo
 cd Github_Repo
-docker build -t vid-compress .
-apt -qq update && apt -qq install -y git ffmpeg
-pip3 install -U -r requirements.txt
-_externals
-python3 -m bot
+
+# Build Docker image
+docker build -t justcm .
+
+# Run Docker container
+docker run justcm bash start.sh
